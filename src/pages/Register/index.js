@@ -1,12 +1,32 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Button, Gap, Header, Input} from '../../components';
+import {StyleSheet, View} from 'react-native';
 
-export default function Register() {
+import React from 'react';
+import {colors} from '../../utils';
+
+export default function Register({navigation}) {
   return (
-    <View>
-      <Text>Test Register</Text>
+    <View style={styles.page}>
+      <Header onPress={() => navigation.goBack()} title="Daftar Akun" />
+      <View style={styles.content}>
+        <Input label="Full Name" />
+        <Gap height={24} />
+        <Input label="Pekerjaan" />
+        <Gap height={24} />
+        <Input label="Email" />
+        <Gap height={24} />
+        <Input label="Password" />
+        <Gap height={40} />
+        <Button
+          title="Continue"
+          onPress={() => navigation.navigate('UploadPhoto')}
+        />
+      </View>
     </View>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  page: {backgroundColor: colors.white, flex: 1},
+  content: {padding: 40, paddingTop: 0},
+});

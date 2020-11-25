@@ -1,7 +1,9 @@
-import React from 'react';
+import {Button, Gap, Input, Link} from '../../components';
 import {StyleSheet, Text, View} from 'react-native';
+import {colors, fonts} from '../../utils';
+
 import {ILLogo} from '../../assets';
-import {Input, Link, Button, Gap} from '../../components';
+import React from 'react';
 
 export default function Login() {
   return (
@@ -22,11 +24,11 @@ export default function Login() {
 }
 
 const styles = StyleSheet.create({
-  page: {padding: 40, backgroundColor: 'white', flex: 1},
+  page: {padding: 40, backgroundColor: colors.white, flex: 1},
   title: {
     fontSize: 20,
-    fontFamily: 'Nunito-SemiBold',
-    color: '#112340',
+    fontFamily: fonts.primary[600],
+    color: colors.text.primary,
     marginTop: 40,
     marginBottom: 40,
     maxWidth: 180,
