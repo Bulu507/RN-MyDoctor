@@ -1,11 +1,11 @@
-import {Button, Gap, Input, Link} from '../../components';
+import {Button, Gap, Input, Link, TabItem} from '../../components';
 import {StyleSheet, Text, View} from 'react-native';
 import {colors, fonts} from '../../utils';
 
 import {ILLogo} from '../../assets';
 import React from 'react';
 
-export default function Login() {
+export default function Login({navigation}) {
   return (
     <View style={styles.page}>
       <ILLogo />
@@ -16,7 +16,7 @@ export default function Login() {
       <Gap height={10} />
       <Link title="Forgot my password" size={12} />
       <Gap height={40} />
-      <Button title="Sign In" />
+      <Button title="Sign In" onPress={() => navigation.replace('MainApp')} />
       <Gap height={30} />
       <Link title="Create new account" size={16} align="center" />
     </View>
