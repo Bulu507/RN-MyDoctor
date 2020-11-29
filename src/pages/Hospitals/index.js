@@ -1,7 +1,12 @@
+import {
+  DummyHospital1,
+  DummyHospital2,
+  DummyHospital3,
+  ILHospitalBG,
+} from '../../assets';
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
 import {colors, fonts} from '../../utils';
 
-import {ILHospitalBG} from '../../assets';
 import {ListHospital} from '../../components';
 import React from 'react';
 
@@ -13,9 +18,24 @@ export default function Hospitals() {
         <Text style={styles.desc}>3 Tersedia</Text>
       </ImageBackground>
       <View style={styles.content}>
-        <ListHospital />
-        <ListHospital />
-        <ListHospital />
+        <ListHospital
+          type="Rumah Sakit"
+          name="Dr. Asmir"
+          address="Jl. Dr. Muwardi Salatiga"
+          pic={DummyHospital1}
+        />
+        <ListHospital
+          type="Rumah Sakit Anak"
+          name="Mutiara Bunda"
+          address="Jl. Klaseman Salatiga"
+          pic={DummyHospital2}
+        />
+        <ListHospital
+          type="Rumah Sakit Paru-Paru"
+          name="Dr. Ario Wirawan"
+          address="Jl. Hasanudin Salatiga"
+          pic={DummyHospital3}
+        />
       </View>
     </View>
   );

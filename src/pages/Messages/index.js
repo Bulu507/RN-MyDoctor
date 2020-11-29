@@ -1,17 +1,45 @@
+import {DummyDoctor1, DummyDoctor2, DummyDoctor3} from '../../assets';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {colors, fonts} from '../../utils';
 
 import {ListDoctor} from '../../components';
-import React from 'react';
 
 export default function Messages() {
+  const [doctors, setDoctors] = useState([
+    {
+      id: 1,
+      profile: DummyDoctor1,
+      name: 'Dr. Tammy',
+      desc: 'Terimakasih, sehat selalu',
+    },
+    {
+      id: 2,
+      profile: DummyDoctor2,
+      name: 'Dr. Robby',
+      desc: 'Terimakasih, sehat selalu',
+    },
+    {
+      id: 3,
+      profile: DummyDoctor3,
+      name: 'Dr. Mufti',
+      desc: 'Terimakasih, sehat selalu',
+    },
+  ]);
   return (
     <View style={styles.page}>
       <View style={styles.content}>
         <Text style={styles.title}>Messages</Text>
-        <ListDoctor />
-        <ListDoctor />
-        <ListDoctor />
+        {doctors.map((doctor) => {
+          return (
+            <ListDoctor
+              key={doctor.id}
+              profile={doctor.profile}
+              name={doctor.name}
+              desc={doctor.desc}
+            />
+          );
+        })}
       </View>
     </View>
   );
