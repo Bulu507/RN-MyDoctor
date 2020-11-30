@@ -11,7 +11,7 @@ import {colors, fonts} from '../../utils';
 import {JSONCategoryDoctor} from '../../assets';
 import React from 'react';
 
-export default function Doctor() {
+export default function Doctor({navigation}) {
   return (
     <View style={styles.page}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -29,7 +29,11 @@ export default function Doctor() {
                 <Gap width={32} />
                 {JSONCategoryDoctor.data.map((item) => {
                   return (
-                    <DoctorCategory key={item.id} category={item.category} />
+                    <DoctorCategory
+                      key={item.id}
+                      category={item.category}
+                      onPress={() => navigation.navigate('ChooseDoctor')}
+                    />
                   );
                 })}
                 <Gap width={22} />
