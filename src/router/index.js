@@ -2,13 +2,16 @@ import {
   Chatting,
   ChooseDoctor,
   Doctor,
+  DoctorProfile,
   GetStarted,
   Hospitals,
   Login,
   Messages,
   Register,
   Splash,
+  UpdateProfile,
   UploadPhoto,
+  UserProfile,
 } from '../pages';
 
 import {BottomNavigator} from '../components';
@@ -31,7 +34,7 @@ const MainApp = () => {
 
 export default function Router() {
   return (
-    <Stack.Navigator initialRouteName="MainApp">
+    <Stack.Navigator initialRouteName="Splash">
       <Stack.Screen
         name="Splash"
         component={Splash}
@@ -70,6 +73,21 @@ export default function Router() {
       <Stack.Screen
         name="Chatting"
         component={Chatting}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="UserProfile"
+        component={UserProfile}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="UpdateProfile"
+        component={UpdateProfile}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="DoctorProfile"
+        component={DoctorProfile}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

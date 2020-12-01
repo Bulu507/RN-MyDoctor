@@ -5,10 +5,15 @@ import {
   NewsItem,
   RatedDoctor,
 } from '../../components';
+import {
+  DummyDoctor1,
+  DummyDoctor2,
+  DummyDoctor3,
+  JSONCategoryDoctor,
+} from '../../assets';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {colors, fonts} from '../../utils';
 
-import {JSONCategoryDoctor} from '../../assets';
 import React from 'react';
 
 export default function Doctor({navigation}) {
@@ -18,7 +23,7 @@ export default function Doctor({navigation}) {
         <View style={styles.content}>
           <View style={styles.wrapperSection}>
             <Gap height={30} />
-            <HomeProfile />
+            <HomeProfile onPress={() => navigation.navigate('UserProfile')} />
             <Text style={styles.welcome}>
               Mau konsultasi dengan siapa hari ini?
             </Text>
@@ -42,9 +47,24 @@ export default function Doctor({navigation}) {
           </View>
           <View style={styles.wrapperSection}>
             <Text style={styles.sectionLabel}>Top Rated Doctors</Text>
-            <RatedDoctor />
-            <RatedDoctor />
-            <RatedDoctor />
+            <RatedDoctor
+              name="Dr. Tammy Aulia"
+              desc="Pediatrician"
+              avatar={DummyDoctor1}
+              onPress={() => navigation.navigate('DoctorProfile')}
+            />
+            <RatedDoctor
+              name="Dr. John Doe"
+              desc="Dentist"
+              avatar={DummyDoctor2}
+              onPress={() => navigation.navigate('DoctorProfile')}
+            />
+            <RatedDoctor
+              name="Dr. Raisa B."
+              desc="Orthodentist"
+              avatar={DummyDoctor3}
+              onPress={() => navigation.navigate('DoctorProfile')}
+            />
             <Text style={styles.sectionLabel}>Good news</Text>
           </View>
           <NewsItem />

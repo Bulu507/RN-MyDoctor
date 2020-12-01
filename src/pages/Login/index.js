@@ -1,4 +1,4 @@
-import {Button, Gap, Input, Link, TabItem} from '../../components';
+import {Button, Gap, Input, Link} from '../../components';
 import {StyleSheet, Text, View} from 'react-native';
 import {colors, fonts} from '../../utils';
 
@@ -18,7 +18,12 @@ export default function Login({navigation}) {
       <Gap height={40} />
       <Button title="Sign In" onPress={() => navigation.replace('MainApp')} />
       <Gap height={30} />
-      <Link title="Create new account" size={16} align="center" />
+      <Link
+        title="Create new account"
+        size={16}
+        align="center"
+        onPress={() => navigation.navigate('Register')}
+      />
     </View>
   );
 }
