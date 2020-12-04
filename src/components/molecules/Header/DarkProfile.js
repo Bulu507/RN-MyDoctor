@@ -1,8 +1,9 @@
-import React from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import {colors, fonts} from '../../../utils';
+
 import {Button} from '../../../components';
 import {DummyDoctor9} from '../../../assets';
+import React from 'react';
 
 export default function DarkProfile({onPress}) {
   return (

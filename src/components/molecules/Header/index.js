@@ -1,8 +1,8 @@
 import {Button, Gap} from '../../atoms';
 import {StyleSheet, Text, View} from 'react-native';
 import {colors, fonts} from '../../../utils';
-import DarkProfile from './DarkProfile';
 
+import DarkProfile from './DarkProfile';
 import React from 'react';
 
 export default function Header({onPress, title, type}) {
