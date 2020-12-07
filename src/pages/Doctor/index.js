@@ -11,12 +11,16 @@ import {
   DummyDoctor3,
   JSONCategoryDoctor,
 } from '../../assets';
+import React, {useEffect} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {colors, fonts} from '../../utils';
-
-import React from 'react';
+import {colors, fonts, getData} from '../../utils';
 
 export default function Doctor({navigation}) {
+  useEffect(() => {
+    getData('user').then((res) => {
+      console.log('data user:', res);
+    });
+  }, []);
   return (
     <View style={styles.page}>
       <ScrollView showsVerticalScrollIndicator={false}>

@@ -24,15 +24,16 @@ export default function Register({navigation}) {
         setloading(false);
         setForm('reset');
         const data = {
-          fullName: form.email,
+          fullName: form.fullName,
           profession: form.profession,
           email: form.email,
+          uid: success.user.uid,
         };
         Fire.database()
           .ref('users/' + success.user.uid + '/')
           .set(data);
         storeData('user', data);
-        navigation.navigate('UploadPhoto');
+        navigation.navigate('UploadPhoto', data);
         console.log('success register: ', success);
       })
       .catch((error) => {
