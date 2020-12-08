@@ -38,9 +38,8 @@ export default function Register({navigation}) {
       })
       .catch((error) => {
         setloading(false);
-        const errorMessage = error.message;
         showMessage({
-          message: errorMessage,
+          message: error.message,
           type: 'default',
           backgroundColor: colors.error,
           color: colors.white,
