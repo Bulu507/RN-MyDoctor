@@ -1,11 +1,10 @@
 import {Gap, Header, List, Profile} from '../../components';
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {colors, getData} from '../../utils';
+import {colors, getData, showError} from '../../utils';
 
 import {Fire} from '../../config';
 import {ILNullPhoto} from '../../assets';
-import {showMessage} from 'react-native-flash-message';
 
 export default function UserProfile({navigation}) {
   const [profile, setProfile] = useState({
@@ -30,12 +29,7 @@ export default function UserProfile({navigation}) {
         navigation.replace('GetStarted');
       })
       .catch((error) => {
-        showMessage({
-          message: error.message,
-          type: 'default',
-          backgroundColor: colors.error,
-          color: colors.white,
-        });
+        showError(error.message);
       });
   };
 

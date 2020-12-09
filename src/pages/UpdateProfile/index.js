@@ -1,12 +1,11 @@
 import {Button, Gap, Header, Input, Profile} from '../../components';
 import React, {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
-import {colors, getData, storeData} from '../../utils';
+import {colors, getData, showError, storeData} from '../../utils';
 
 import {Fire} from '../../config';
 import {ILNullPhoto} from '../../assets';
 import ImagePicker from 'react-native-image-picker';
-import {showMessage} from 'react-native-flash-message';
 
 export default function UpdateProfile({navigation}) {
   const [profile, setProfile] = useState({
@@ -32,12 +31,7 @@ export default function UpdateProfile({navigation}) {
 
     if (password.length > 0) {
       if (password.length < 6) {
-        showMessage({
-          message: 'Jumlah password kurang dari 6 digit',
-          type: 'default',
-          backgroundColor: colors.error,
-          color: colors.white,
-        });
+        showError('Jumlah password kurang dari 6 digit');
       } else {
         // update password
         updatePasswordData();
@@ -55,12 +49,7 @@ export default function UpdateProfile({navigation}) {
       if (user) {
         // update password
         user.updatePassword(password).catch((error) => {
-          showMessage({
-            message: error.message,
-            type: 'default',
-            backgroundColor: colors.error,
-            color: colors.white,
-          });
+          showError(error.message);
         });
       }
     });
@@ -78,12 +67,7 @@ export default function UpdateProfile({navigation}) {
       })
       .catch((error) => {
         console.log('error:', error);
-        showMessage({
-          message: error.message,
-          type: 'default',
-          backgroundColor: colors.error,
-          color: colors.white,
-        });
+        showError(error.message);
       });
   };
 
@@ -100,12 +84,7 @@ export default function UpdateProfile({navigation}) {
       (response) => {
         console.log('response : ', response);
         if (response.didCancel || response.error) {
-          showMessage({
-            message: 'oops, sepertinya anda belum memilih photo.',
-            type: 'default',
-            backgroundColor: colors.error,
-            color: colors.white,
-          });
+          showError('Maaf anda belum memilih photo.');
         } else {
           console.log('response getImage: ', response);
           const source = {uri: response.uri};

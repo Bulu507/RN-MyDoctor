@@ -2,11 +2,10 @@ import {Button, Gap, Header, Link} from '../../components';
 import {ILNullPhoto, IconAddPhoto, IconRemovePhoto} from '../../assets';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
-import {colors, fonts, storeData} from '../../utils';
+import {colors, fonts, showError, storeData} from '../../utils';
 
 import {Fire} from '../../config';
 import ImagePicker from 'react-native-image-picker';
-import {showMessage} from 'react-native-flash-message';
 
 export default function UploadPhoto({navigation, route}) {
   const {fullName, profession, uid} = route.params;
@@ -20,12 +19,7 @@ export default function UploadPhoto({navigation, route}) {
       (response) => {
         console.log('response : ', response);
         if (response.didCancel || response.error) {
-          showMessage({
-            message: 'oops, sepertinya anda belum memilih photo.',
-            type: 'default',
-            backgroundColor: colors.error,
-            color: colors.white,
-          });
+          showError('oops, sepertinya anda belum memilih photo.');
         } else {
           console.log('response getImage: ', response);
           const source = {uri: response.uri};
