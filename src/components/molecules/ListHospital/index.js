@@ -6,7 +6,7 @@ import React from 'react';
 export default function ListHospital({type, address, name, pic}) {
   return (
     <View style={styles.container}>
-      <Image source={pic} style={styles.picture} />
+      <Image source={{uri: pic}} style={styles.picture} />
       <View>
         <Text style={styles.title}>{type}</Text>
         <Text style={styles.title}>{name}</Text>

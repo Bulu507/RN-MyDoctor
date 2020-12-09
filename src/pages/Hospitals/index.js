@@ -1,16 +1,27 @@
-import {
-  DummyHospital1,
-  DummyHospital2,
-  DummyHospital3,
-  ILHospitalBG,
-} from '../../assets';
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
-import {colors, fonts} from '../../utils';
+import React, {useEffect, useState} from 'react';
+import {colors, fonts, showError} from '../../utils';
 
+import {Fire} from '../../config';
+import {ILHospitalBG} from '../../assets';
 import {ListHospital} from '../../components';
-import React from 'react';
 
 export default function Hospitals() {
+  const [hospitals, setHospitals] = useState([]);
+  useEffect(() => {
+    Fire.database()
+      .ref('hospitals/')
+      .once('value')
+      .then((res) => {
+        console.log('hospitals data:', res.val());
+        if (res.val()) {
+          setHospitals(res.val());
+        }
+      })
+      .catch((err) => {
+        showError(err.message);
+      });
+  }, []);
   return (
     <View style={styles.page}>
       <ImageBackground source={ILHospitalBG} style={styles.background}>
@@ -18,24 +29,17 @@ export default function Hospitals() {
         <Text style={styles.desc}>3 Tersedia</Text>
       </ImageBackground>
       <View style={styles.content}>
-        <ListHospital
-          type="Rumah Sakit"
-          name="Dr. Asmir"
-          address="Jl. Dr. Muwardi Salatiga"
-          pic={DummyHospital1}
-        />
-        <ListHospital
-          type="Rumah Sakit Anak"
-          name="Mutiara Bunda"
-          address="Jl. Klaseman Salatiga"
-          pic={DummyHospital2}
-        />
-        <ListHospital
-          type="Rumah Sakit Paru-Paru"
-          name="Dr. Ario Wirawan"
-          address="Jl. Hasanudin Salatiga"
-          pic={DummyHospital3}
-        />
+        {hospitals.map((item) => {
+          return (
+            <ListHospital
+              key={item.id}
+              type={item.type}
+              name={item.name}
+              address={item.address}
+              pic={item.image}
+            />
+          );
+        })}
       </View>
     </View>
   );

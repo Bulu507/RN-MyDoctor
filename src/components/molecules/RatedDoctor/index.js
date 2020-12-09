@@ -7,7 +7,7 @@ import React from 'react';
 export default function RatedDoctor({onPress, name, desc, avatar}) {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
-      <Image source={avatar} style={styles.avatar} />
+      <Image source={{uri: avatar}} style={styles.avatar} />
       <View style={styles.profile}>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.category}>{desc}</Text>
