@@ -5,9 +5,11 @@ import {colors, fonts} from '../../../utils';
 import DarkProfile from './DarkProfile';
 import React from 'react';
 
-export default function Header({onPress, title, type}) {
+export default function Header({onPress, photo, title, desc, type}) {
   if (type === 'dark-profile') {
-    return <DarkProfile onPress={onPress} />;
+    return (
+      <DarkProfile onPress={onPress} title={title} desc={desc} photo={photo} />
+    );
   }
   return (
     <View style={styles.container(type)}>
@@ -38,5 +40,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: fonts.primary[600],
     color: type === 'dark' ? colors.white : colors.text.primary,
+    textTransform: 'capitalize',
   }),
 });

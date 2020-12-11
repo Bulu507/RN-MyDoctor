@@ -2,6 +2,7 @@ import {Provider, useSelector} from 'react-redux';
 
 import FlashMessage from 'react-native-flash-message';
 import {Loading} from './components';
+import {LogBox} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import Router from './router';
@@ -9,7 +10,10 @@ import store from './redux/store';
 
 const MainApp = () => {
   const stateGlobal = useSelector((state) => state);
-  console.log('state global: ', stateGlobal);
+  LogBox.ignoreLogs([
+    'Setting a timer',
+    'Warning: isMounted(...) is deprecated',
+  ]);
   return (
     <>
       <NavigationContainer>

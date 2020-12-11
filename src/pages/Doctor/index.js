@@ -29,7 +29,6 @@ export default function Doctor({navigation}) {
       .limitToLast(3)
       .once('value')
       .then((res) => {
-        console.log('top rated:', res.val());
         if (res.val()) {
           const oldData = res.val();
           const data = [];
@@ -53,9 +52,11 @@ export default function Doctor({navigation}) {
       .ref('category_doctor/')
       .once('value')
       .then((res) => {
-        console.log('category doctor:', res.val());
         if (res.val()) {
-          setCategoryDoctor(res.val());
+          const data = res.val();
+          const filterData = data.filter((el) => el !== null);
+          setCategoryDoctor(filterData);
+          console.log('category doctor:', filterData);
         }
       })
       .catch((err) => {
@@ -68,9 +69,11 @@ export default function Doctor({navigation}) {
       .ref('news/')
       .once('value')
       .then((res) => {
-        console.log('news data:', res.val());
         if (res.val()) {
-          setNews(res.val());
+          const data = res.val();
+          const filterData = data.filter((el) => el !== null);
+          setNews(filterData);
+          console.log('news data:', filterData);
         }
       })
       .catch((err) => {
@@ -98,7 +101,7 @@ export default function Doctor({navigation}) {
                     <DoctorCategory
                       key={item.id}
                       category={item.category}
-                      onPress={() => navigation.navigate('ChooseDoctor')}
+                      onPress={() => navigation.navigate('ChooseDoctor', item)}
                     />
                   );
                 })}
@@ -111,10 +114,11 @@ export default function Doctor({navigation}) {
             {doctors.map((item) => {
               return (
                 <RatedDoctor
+                  key={item.id}
                   name={item.data.fullName}
                   desc={item.data.profession}
                   avatar={item.data.photo}
-                  onPress={() => navigation.navigate('DoctorProfile')}
+                  onPress={() => navigation.navigate('DoctorProfile', item)}
                 />
               );
             })}
