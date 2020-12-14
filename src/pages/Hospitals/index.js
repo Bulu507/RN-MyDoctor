@@ -13,7 +13,6 @@ export default function Hospitals() {
       .ref('hospitals/')
       .once('value')
       .then((res) => {
-        console.log('hospitals data:', res.val());
         if (res.val()) {
           setHospitals(res.val());
         }

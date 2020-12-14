@@ -13,15 +13,12 @@ export default function UploadPhoto({navigation, route}) {
   const [hasPhoto, setHasPhoto] = useState(false);
   const [photo, setPhoto] = useState(ILNullPhoto);
   const getImage = () => {
-    console.log('masuk getImage');
     ImagePicker.launchImageLibrary(
       {quality: 0.5, maxWidth: 200, maxHeight: 200},
       (response) => {
-        console.log('response : ', response);
         if (response.didCancel || response.error) {
           showError('oops, sepertinya anda belum memilih photo.');
         } else {
-          console.log('response getImage: ', response);
           const source = {uri: response.uri};
           setPhotoForDB(`data:${response.type};base64, ${response.data}`);
           setPhoto(source);

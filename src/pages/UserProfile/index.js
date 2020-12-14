@@ -25,7 +25,6 @@ export default function UserProfile({navigation}) {
     Fire.auth()
       .signOut()
       .then(() => {
-        console.log('success sign out');
         navigation.replace('GetStarted');
       })
       .catch((error) => {

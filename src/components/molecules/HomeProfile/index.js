@@ -15,7 +15,6 @@ export default function HomeProfile({onPress}) {
     getData('user').then((res) => {
       const data = res;
       data.photo = {uri: res.photo};
-      console.log('data user:', data);
       setProfile(res);
     });
   }, []);

@@ -14,7 +14,6 @@ export default function ChooseDoctor({navigation, route}) {
   }, [itemCategory.category]);
 
   const getDoctorByCategory = (category) => {
-    console.log('category', category);
     Fire.database()
       .ref('doctors/')
       .orderByChild('category')

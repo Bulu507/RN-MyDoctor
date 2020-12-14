@@ -38,7 +38,6 @@ export default function Doctor({navigation}) {
               data: oldData[key],
             });
           });
-          console.log('data parse rate:', data);
           setDoctors(data);
         }
       })
@@ -56,7 +55,6 @@ export default function Doctor({navigation}) {
           const data = res.val();
           const filterData = data.filter((el) => el !== null);
           setCategoryDoctor(filterData);
-          console.log('category doctor:', filterData);
         }
       })
       .catch((err) => {
@@ -73,7 +71,6 @@ export default function Doctor({navigation}) {
           const data = res.val();
           const filterData = data.filter((el) => el !== null);
           setNews(filterData);
-          console.log('news data:', filterData);
         }
       })
       .catch((err) => {

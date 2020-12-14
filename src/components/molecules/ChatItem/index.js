@@ -1,10 +1,10 @@
-import React from 'react';
 import IsMe from './IsMe';
 import Other from './Other';
+import React from 'react';
 
-export default function ChatItem({isMe}) {
+export default function ChatItem({isMe, chat, date, photo}) {
   if (isMe) {
-    return <IsMe />;
+    return <IsMe chat={chat} date={date} />;
   }
-  return <Other />;
+  return <Other chat={chat} date={date} photo={photo} />;
 }

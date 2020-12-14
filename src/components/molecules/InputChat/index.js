@@ -4,7 +4,7 @@ import {colors, fonts} from '../../../utils';
 import {Button} from '../../../components';
 import React from 'react';
 
-export default function InputChat({value, onChangeText, onButtonPress}) {
+export default function InputChat({onChangeText, value, onButtonPress}) {
   return (
     <View style={styles.container}>
       <TextInput
@@ -23,7 +23,7 @@ export default function InputChat({value, onChangeText, onButtonPress}) {
 }
 
 const styles = StyleSheet.create({
-  container: {padding: 16, flexDirection: 'row', backgroundColor: colors.white},
+  container: {padding: 16, flexDirection: 'row'},
   input: {
     backgroundColor: colors.disable,
     padding: 14,

@@ -1,17 +1,17 @@
-import React from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import {colors, fonts} from '../../../utils';
-import {DummyDoctor9} from '../../../assets';
 
-export default function Other() {
+import React from 'react';
+
+export default function Other({chat, date, photo}) {
   return (
     <View style={styles.container}>
-      <Image source={DummyDoctor9} style={styles.avatar} />
+      <Image source={{uri: photo}} style={styles.avatar} />
       <View>
         <View style={styles.chatContent}>
-          <Text style={styles.text}>Apakah penyakit siput gila menular?</Text>
+          <Text style={styles.text}>{chat}</Text>
         </View>
-        <Text style={styles.date}>4.20 AM</Text>
+        <Text style={styles.date}>{date}</Text>
       </View>
     </View>
   );
